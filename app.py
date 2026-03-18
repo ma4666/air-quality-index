@@ -216,6 +216,7 @@ def update_dashboard(site, pollutant):
 # ---------------------------------------------------
 
 server = app.server
+app = Dash(__name__)
 
 if __name__ == "__main__":
     app.run(debug=True)
