@@ -284,21 +284,21 @@ def update_dashboard(pollutant, city, start_date, end_date):
        html.P(rec)
     ])
 
-top_sites = df.groupby("site")[pollutant].mean().reset_index()
-top_sites = top_sites.sort_values(by=pollutant, ascending=False).head(5)
+    top_sites = df.groupby("site")[pollutant].mean().reset_index()
+    top_sites = top_sites.sort_values(by=pollutant, ascending=False).head(5)
 
-top_fig = px.bar(top_sites, x="site", y=pollutant)
-map_data = df.groupby("site").first().reset_index()
+    top_fig = px.bar(top_sites, x="site", y=pollutant)
+    map_data = df.groupby("site").first().reset_index()
 
-map_fig = px.scatter_mapbox(
-    map_data,
-    lat="latitude",
-    lon="longitude",
-    hover_name="site",
-    zoom=4
-)
+    map_fig = px.scatter_mapbox(
+        map_data,
+        lat="latitude",
+        lon="longitude",
+        hover_name="site",
+        zoom=4
+    )
 
-map_fig.update_layout(mapbox_style="open-street-map")
+    map_fig.update_layout(mapbox_style="open-street-map")
 
     stats_box = html.Div([
         html.H4(f"{pollutant.upper()} Summary Statistics"),
