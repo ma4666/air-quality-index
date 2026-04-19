@@ -269,7 +269,7 @@ def update_dashboard(pollutant, city, start_date, end_date):
 
     filtered = filtered.dropna(subset=[pollutant])
 
-   if filtered.empty:
+    if filtered.empty:
       return (None,) * 19
 
     filtered = filtered.sort_values("date").tail(1000)
